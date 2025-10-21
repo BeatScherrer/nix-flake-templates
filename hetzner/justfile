@@ -1,0 +1,18 @@
+# NixOS n8n Deployment Commands
+
+ip := "TODO"
+ssh_key_path := "TODO"
+
+# Default recipe to display available commands
+default:
+    @just --list
+
+# Setup deployment (run once)
+setup:
+  nix run github:nix-community/nixos-anywhere -- --flake .#default root@{{ip}} -i {{ssh_key_path}}
+
+deploy:
+    nix run github:serokell/deploy-rs -- .#default
+
+ssh:
+    ssh -i {{ssh_key_path}} -- {{ip}}
