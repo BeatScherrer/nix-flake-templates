@@ -20,7 +20,7 @@
   ];
 
   networking = {
-    hostName = "hetzner";
+    hostName = "TODO";
     useNetworkd = true;
     # common firewall configs
     # firewall = {
